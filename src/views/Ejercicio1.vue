@@ -19,14 +19,6 @@
         <button @click="calculoNumerosPrimos(`${num1}`,`${num2}`)">calcula</button>
       </div>
     </div>
-<!-- 
-    <div class="row">
-      <div class="col">
-        <span class="m-2"> Resultado</span>
-        <div class="form-text m-2" id="emailHelp">{{ myPrimeArray }}</div>
-        <div class="m-2 form-text"></div>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -44,35 +36,47 @@ export default {
   methods: {
 
     calculoNumerosPrimos(num1,num2) {
-      if (num1 < 0 || num2 < 0){
-        alert('Debe ingresar valores superiores a cero ')}
-        else if (num1 =='' && num2 ==''){
-        alert('Debe ingresar algún valor')
+      if (num1 > num2){
+        alert('Alerta, el valor del segundo campo debe ser mayor')
+      }
+      else if (num1 =='') {
+        alert('Alerta, Debe ingresar algún valor en el primer campo')
+        return false;
+      }
+      else if (num2 =='') {
+        alert('Alerta, debe ingresar algún valor en el segundo campo')
+        return false;
         }
-              else if (num1 == num2){
-        alert('Los valores deben ser distintos')
-              }
-              if (num2<num1)
-      alert ('El primer valor debe ser mayor al segundo')
-        if (num1<num2){
+      else if (num1 <= 0) {
+        alert('Debe ingresar valores superiores a cero en el primer campo')
+        return false;
+      }
+      else if (num2 <= 0) {
+        alert('Debe ingresar valores superiores a cero en el segundo campo')
+        return false;
+      }
+      else if (num1 == num2) {
+        alert('El valor del segundo campo debe ser mayor')
+        return false;
+      }
+      else{
         const Array = [];
         for (let i = 1; i <= num2; i++) {
           Array.push(i);
         }
 
         const arrayFiltered = Array.slice(num1 - 1, num2);
-        
         const myPrimeArray = arrayFiltered.filter((num) => {
-          for (let i = 2; i < num; i++) {
-            if (num % i === 0) return false;
+        for (let i = 2; i < num; i++) {
+          if (num % i === 0) return false;
           }
-          return num !== 1;
+            return num !== 1;
         });
-
         this.myPrimeArray = myPrimeArray;
         alert("los valores calculados son: "+ myPrimeArray);
       }
-
+      console.log(num1)
+      console.log(num2)
     },
   },
 
