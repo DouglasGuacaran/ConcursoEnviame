@@ -1,7 +1,8 @@
 <template>
   <div class="ejercicio2">
     <h1>Ejercicio 2</h1>
-    <span>{{Json1}}</span>
+    <div class="col-2 m-3"><span>{{Json1}}</span></div>
+
   </div>
 </template>
 
