@@ -1,22 +1,25 @@
 <template>
   <div class="ejercicio2">
     <h1>Ejercicio 2</h1>
-    <div class="col-2 m-3"><span>{{Json1}}</span></div>
-
+    <div class="col-3 m-3"><span class="text" >let result = {{Json1}}</span></div>
+    <div class="col" v-for="(item, index) in arreglu" :key="'A'+index">
+    <Card :localidad="`Esta`"/>
+    </div>
   </div>
 </template>
 
 <script>
-
+import Card from '../components/Card.vue'
 export default {
 name:'Ejercicio2',
 data(){
   return{
     Json1:'',
+    arreglu:[],
   }
 },
 components:{
-  
+  Card
 },
 methods:{
   JSON(){
@@ -57,34 +60,36 @@ methods:{
     }
 }
 
-console.log('json 1');
+// Datos del json 1 //
 console.log(values);
-console.log('-----------');
-console.log('json 2');
+// Datos del json 2 //
 console.log(json);
-console.log('---------RESULTADO---------');
+// Trabajaremos con el json.data//
 console.log(json.data);
+// del Objeto json.data extraigo un arreglo de props
 const arrProp = Object.keys(json.data);
-console.log('-----arreglo de props-----');
 console.log(arrProp);
+
+// Declaro un objeto vacío que será el resultado
 let objResult = {};
-console.log('ITERANDO');
+
+// se realizará las iteraciones del arreglo obtenido para construir el Objeto Resultado
 arrProp.forEach((nombreProp) => {
-  console.log('prop');
+// visualicemos los nombres
   console.log(nombreProp);
+// usando el nombreProp como argumento y con el uso de los valores de id declaremos dos variables donde se alojarán los datos del valor Over y del valor Under 
   let valorOver = json.data[nombreProp].over_carrier_service_id;
   let valorUnder = json.data[nombreProp].under_carrier_service_id;
-  console.log('data que vamos sacando de json');
-  console.log('over_carrier_service_id:');
+// visualicemos el valor de Over de cada uno
   console.log(valorOver);
-  console.log('under_carrier_service_id:');
+// visualicemos el valor de Under de cada uno
   console.log(valorUnder);
-
-  console.log('valores que vamos a meter');
+// Usamos el Json values para obtener carrier y service
   console.log('Over');
   console.log(values[valorOver]);
   console.log('Under');
   console.log(values[valorUnder]);
+  //construimos el objeto resultado
   objResult[nombreProp] = {
     limit: json.data[nombreProp].limit,
     over: values[valorOver],
@@ -92,7 +97,7 @@ arrProp.forEach((nombreProp) => {
   };
 });
 
-console.log('como queda objResult');
+// console.log('como queda el objeto Resultado');
 console.log(objResult);
 
 this.Json1 = objResult
