@@ -1,5 +1,5 @@
 <template>
-  <b-card title="Data">
+  <b-card class="cards" title="Data">
     <b-card-text> Localidad: {{ localidad }} </b-card-text>
     <b-card-text> Zona: {{ limit }} </b-card-text>
     <b-card-text> Carrier: {{ carrier }} </b-card-text>
@@ -19,4 +19,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

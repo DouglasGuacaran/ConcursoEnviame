@@ -1,20 +1,22 @@
 <template>
-      <b-card 
-      :title="`${nombre}`"
-      :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${nombre}`">
-        <b-card-text> Nombre del Heroe: {{ nombre }} </b-card-text>
-        <b-card-text> Descripcion: {{ descripcion }} </b-card-text>
-        <b-card-text> Modificado: {{ modificado }} </b-card-text>
-        <Boton/>
-      </b-card>
+<b-col class="cards">
+  <b-card
+      class="cards"
+      :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${nombre}`" img-height="170">
+        <b-card-text class="texto-nombre"> {{ nombre }} </b-card-text>
+        <b-card-text class="texto-descripcion"> Descripcion: {{ descripcion }} </b-card-text>
+        <b-card-text class="texto-modificado"> Modificado: {{ modificado }} </b-card-text>
+        <b-button @click="editarCard()">Editar</b-button>
+  </b-card>
+</b-col>
+    
 </template>
 
 <script>
-import Boton from '../components/BotonEditar.vue'
+import { mapActions } from "vuex";
 export default {
   name: "Card",
   components:{
-    Boton
   },
   props: {
     nombre: String,
@@ -22,10 +24,43 @@ export default {
     thumbnailExtension: String,
     descripcion: String,
     modificado: String,
+    indice: String
   },
+  methods: {
+    ...mapActions(['editHeroAction']),
+    editarCard() {
+      console.log('estamos editando: ', this.indice);
+      this.editHeroAction(this.indice);
+    }
+  }
 };
 </script>
 
 <style>
+.cards{
+  margin: 6px;
+  height: 355px;
+  width: 175px;
+  padding: 0;
+}
+.cards:hover{
+  transform: scale(1.1);
+  z-index: 99;
+}
+.texto-nombre{
+  margin: 2px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.texto-descripcion{
+  font-size: xx-small;
+}
+.texto-modificado{
+  font-size: x-small;
+  margin-bottom: 4px;
+}
+.card-body{
+  padding: 3px;
+}
 
 </style>

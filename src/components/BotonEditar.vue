@@ -1,5 +1,5 @@
 <template>
-  <b-button class='btn btn-button' >
+  <b-button class='button btn' size="sm" @click="onClickEditar()">
     Editar
   </b-button>
 </template>
@@ -13,11 +13,16 @@ export default {
     }
     },
     methods:{
-
+      
     },      
     mounted(){
 
+    },
+    computed:{
+      onClickEditar() {
+
       }
+    },
   
 }
 </script>
@@ -27,5 +32,6 @@ export default {
   float: right;
   margin: 0 10px;
   padding: .4em;
+  font-size: small;
   }
 </style>
