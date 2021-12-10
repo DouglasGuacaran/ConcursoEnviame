@@ -8,7 +8,7 @@
     <b-row class="resultado">
       <b-col sm="10" md="7" lg="4">
         <span 
-          class="text" >let result = {{Json1}}
+          class="text" >{{JSON.stringify(Json1)}}
         </span>
       </b-col>
     </b-row>  
@@ -67,14 +67,14 @@ methods:{
 }
 
 // Datos del json 1 //
-console.log(values);
+// console.log(values);
 // Datos del json 2 //
-console.log(json);
+// console.log(json);
 // Trabajaremos con el json.data//
-console.log(json.data);
+// console.log(json.data);
 // del Objeto json.data extraigo un arreglo de props
 const arrProp = Object.keys(json.data);
-console.log(arrProp);
+// console.log(arrProp);
 
 // Declaro un objeto vacío que será el resultado
 let objResult = {};
@@ -82,19 +82,19 @@ let objResult = {};
 // se realizará las iteraciones del arreglo obtenido para construir el Objeto Resultado
 arrProp.forEach((nombreProp) => {
 // visualicemos los nombres
-  console.log(nombreProp);
+  // console.log(nombreProp);
 // usando el nombreProp como argumento y con el uso de los valores de id declaremos dos variables donde se alojarán los datos del valor Over y del valor Under 
   let valorOver = json.data[nombreProp].over_carrier_service_id;
   let valorUnder = json.data[nombreProp].under_carrier_service_id;
 // visualicemos el valor de Over de cada uno
-  console.log(valorOver);
+  // console.log(valorOver);
 // visualicemos el valor de Under de cada uno
-  console.log(valorUnder);
+  // console.log(valorUnder);
 // Usamos el Json values para obtener carrier y service
-  console.log('Over');
-  console.log(values[valorOver]);
-  console.log('Under');
-  console.log(values[valorUnder]);
+  // console.log('Over');
+  // console.log(values[valorOver]);
+  // console.log('Under');
+  // console.log(values[valorUnder]);
   //construimos el objeto resultado
   objResult[nombreProp] = {
     limit: json.data[nombreProp].limit,
@@ -104,7 +104,7 @@ arrProp.forEach((nombreProp) => {
 });
 
 // console.log('como queda el objeto Resultado');
-console.log(objResult);
+// console.log(objResult);
 
 this.Json1 = objResult
   }

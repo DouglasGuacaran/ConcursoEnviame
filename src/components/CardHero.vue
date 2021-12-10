@@ -1,14 +1,19 @@
 <template>
-<b-col class="cards">
-  <b-card
-      class="cards"
-      :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${nombre}`" img-height="170">
-        <b-card-text class="texto-nombre"> {{ nombre }} </b-card-text>
-        <b-card-text class="texto-descripcion"> Descripcion: {{ descripcion }} </b-card-text>
-        <b-card-text class="texto-modificado"> Modificado: {{ modificado }} </b-card-text>
-        <b-button @click="editarCard()">Editar</b-button>
-  </b-card>
-</b-col>
+<b-row>
+  <b-col cols="3">
+    <b-card
+    class="card"
+    :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${nombre}`" img-height="410">
+    </b-card>
+  </b-col>
+  <b-col cols="9" align-self="center">
+    <h2>Nombre: {{ nombre }}</h2>
+    <h3>Modificado: {{ modificado }}</h3>
+  </b-col>
+</b-row>
+
+
+
     
 </template>
 
@@ -29,7 +34,6 @@ export default {
   methods: {
     ...mapActions(['editHeroAction']),
     editarCard() {
-      console.log('estamos editando: ', this.indice);
       this.editHeroAction(this.indice);
     }
   }
@@ -37,30 +41,19 @@ export default {
 </script>
 
 <style>
-.cards{
+.card{
   margin: 6px;
-  height: 355px;
-  width: 175px;
+  height: 400px;
+  width: 350px;
   padding: 0;
 }
-.cards:hover{
-  transform: scale(1.1);
-  z-index: 99;
+.card:hover{
+  transform: scale(1.05);
+  z-index: 90;
 }
-.texto-nombre{
-  margin: 2px;
-  font-size: 14px;
-  font-weight: 400;
-}
-.texto-descripcion{
-  font-size: xx-small;
-}
-.texto-modificado{
-  font-size: x-small;
-  margin-bottom: 4px;
-}
-.card-body{
-  padding: 3px;
+
+#img{
+  padding: 0;
 }
 
 </style>
