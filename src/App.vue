@@ -2,9 +2,7 @@
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="info">
       <b-navbar-brand href="#"><router-link to="/">Examen de Douglas Guacarán </router-link> </b-navbar-brand>
-
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item> <router-link to="/ejercicio1">Ejercicio 1</router-link> </b-nav-item>
@@ -16,6 +14,16 @@
     <router-view/>
   </div>
 </template>
+
+
+<script>
+export default {
+  name:'Navbar'
+
+}
+</script>
+
+
 
 <style>
 #app > nav > a > a { 

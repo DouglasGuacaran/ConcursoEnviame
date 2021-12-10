@@ -1,25 +1,31 @@
 <template>
-  <div class="ejercicio2">
-    <h1>Ejercicio 2</h1>
-    <div class="col-3 m-3"><span class="text" >let result = {{Json1}}</span></div>
-    <div class="col" v-for="(item, index) in arreglu" :key="'A'+index">
-    <Card :localidad="`Esta`"/>
-    </div>
-  </div>
+  <b-container class="ejercicio2">
+    <b-row>
+      <b-col>
+        <h1>Ejercicio 2</h1>
+      </b-col>
+    </b-row>
+    <b-row class="resultado">
+      <b-col sm="10" md="7" lg="4">
+        <span 
+          class="text" >let result = {{Json1}}
+        </span>
+      </b-col>
+    </b-row>  
+  </b-container>
 </template>
 
 <script>
-import Card from '../components/Card.vue'
+
 export default {
 name:'Ejercicio2',
 data(){
   return{
     Json1:'',
-    arreglu:[],
   }
 },
 components:{
-  Card
+  
 },
 methods:{
   JSON(){

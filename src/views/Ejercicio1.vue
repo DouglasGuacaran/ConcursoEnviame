@@ -1,25 +1,29 @@
 <template>
-  <div>
-    <h1>Calcula los números primos en un rango</h1>
-      <div class="row">
-        <div class="col">
+  <b-container>
+    <b-row>
+      <b-col>
+            <h1>Calcula los números primos en un rango</h1>
+      </b-col>
+    </b-row>
+
+      <b-row>
+        <b-col>
           <span class="form-input m-2"> Ingrese primer número del rango</span>
           <input  v-model="num1" class="m-2" type="number" min="0" required/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
           <span class="form-input m-2"> Ingrese segundo número del rango</span>
           <input v-model="num2" class="m-2" type="number" min="0" required/>
-        </div>
-      </div>
-
-    <div class="row">
-      <div class="col m-2">
+        </b-col>
+      </b-row>
+    <b-row>
+      <b-col lg="2" md="4" sm="8">
         <button @click="calculoNumerosPrimos(`${num1}`,`${num2}`)">calcula</button>
-      </div>
-    </div>
-  </div>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>

@@ -1,12 +1,10 @@
 <template>
       <b-card 
       :title="`${nombre}`"
-      :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${nombre}`"
-      style="max-width: 15rem;">
+      :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${nombre}`">
         <b-card-text> Nombre del Heroe: {{ nombre }} </b-card-text>
         <b-card-text> Descripcion: {{ descripcion }} </b-card-text>
         <b-card-text> Modificado: {{ modificado }} </b-card-text>
-
       </b-card>
 </template>
 
