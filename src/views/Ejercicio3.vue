@@ -28,27 +28,28 @@ export default {
   name:'Ejercicio3',
     data(){
     return{
+      offset:20,
     }
   },
   components:{
     CardHero
   },
   computed:{
-    ...mapState(['listOfHeroes','offset']),
+    ...mapState(['listOfHeroes']),
   },
 
   methods:{
-...mapActions(['getHeroesAction','getMoreHeroesAction']),
+...mapActions(['getHeroesAction']),
   handleScroll(){
     let scrollHeight=document.documentElement.scrollHeight
     if (window.scrollY+window.innerHeight>=scrollHeight - 50){
-    this.getMoreHeroesAction()
+    this.getHeroesAction(this.offset=this.offset+20)
     }
   }
 
   },
   mounted(){
-    this.getHeroesAction()
+    this.getHeroesAction(this.offset)
     window.addEventListener("scroll", this.handleScroll)
       }
     
