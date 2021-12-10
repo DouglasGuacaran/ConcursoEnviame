@@ -1,14 +1,31 @@
 <template>
-  <b-button>Editar</b-button>
+  <b-button class='btn btn-button' >
+    Editar
+  </b-button>
 </template>
 
 <script>
 export default {
-    name:'BotonEditar'
+    name:'BotonEditar',
+    data(){
+    return{
 
+    }
+    },
+    methods:{
+
+    },      
+    mounted(){
+
+      }
+  
 }
 </script>
 
 <style>
-
+.button {
+  float: right;
+  margin: 0 10px;
+  padding: .4em;
+  }
 </style>

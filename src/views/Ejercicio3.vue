@@ -42,7 +42,7 @@ export default {
 ...mapActions(['getHeroesAction']),
   handleScroll(){
     let scrollHeight=document.documentElement.scrollHeight
-    if (window.scrollY+window.innerHeight>=scrollHeight - 50){
+    if (window.scrollY+window.innerHeight>=scrollHeight - 10){
     this.getHeroesAction(this.offset=this.offset+1)
     }
   }
