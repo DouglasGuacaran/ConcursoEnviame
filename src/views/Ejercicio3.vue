@@ -43,7 +43,7 @@ export default {
   handleScroll(){
     let scrollHeight=document.documentElement.scrollHeight
     if (window.scrollY+window.innerHeight>=scrollHeight - 50){
-    this.getHeroesAction(this.offset=this.offset+20)
+    this.getHeroesAction(this.offset=this.offset+1)
     }
   }
 

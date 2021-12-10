@@ -22,10 +22,10 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getHeroesAction (context,offset) {
+    getHeroesAction: async function (context,offset) {
       let limit=this.state.limit+offset
 
-      axios.get(`https://gateway.marvel.com:443/v1/public/characters?offset=${this.state.offset-1}&ts=1&limit=${limit}&apikey=b1f34175d9d5ab7a8ff4a2d091499ed0&hash=1838612144f50b3aefa8f42a4189473b`)
+      await axios.get(`https://gateway.marvel.com:443/v1/public/characters?offset=${this.state.offset-1}&ts=1&limit=${limit}&apikey=b1f34175d9d5ab7a8ff4a2d091499ed0&hash=1838612144f50b3aefa8f42a4189473b`)
       .then((response) => {
         // console.log(response)
         // console.log(response.data.data.results)
