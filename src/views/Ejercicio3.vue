@@ -1,7 +1,7 @@
 <template>
 <b-container>
   <b-row v-if="showCardHero" align-h="center">
-    <b-col cols="12" class="text-center" v-for="(item,index) in Hero" :key="index+'A'">
+    <b-col cols="12" class="text-center formularioConsulta" v-for="(item,index) in Hero" :key="index+'A'">
       <CardHero 
       :nombre="item.name"
       :thumbnailPath="item.thumbnailPath"
@@ -15,13 +15,13 @@
       <b-col cols="3">
         <b-img src="https://logos-marcas.com/wp-content/uploads/2020/11/Marvel-Logotipo-2012-2014.jpg" fluid alt="Logo Marvel"></b-img>
       </b-col>
-      <b-col class="formularioConsulta" cols="4">
-        <span>Buscar Personaje:</span>
+      <b-col cols="4">
+        <span class="texto">Buscar Personaje:</span>
         <b-form-input title="Busca personaje" v-model="Hero.name" required>
         </b-form-input>
         <b-row align-h="center">
           <b-col class="p-0 m-1" cols="3">
-            <b-button class="text-center" size="sm" type="submit" @click="requestHero()" >
+            <b-button class="text-center texto" size="sm" type="submit" @click="requestHero()" >
               Buscar
             </b-button>
           </b-col>
@@ -30,10 +30,10 @@
     </b-row >
     <b-row v-if="showForm" class="formularioEditar" align-h="center">
       <b-col cols="10" align-h="center">
-        <span>Nombre del Personaje:</span>
+        <span class="texto">Nombre del Personaje:</span>
         <b-form-input class="text-center" v-model="currentEdit.name">
         </b-form-input>
-        <span>Descripcion:</span>
+        <span class="texto">Descripcion:</span>
         <b-form-input class="text-center" v-model="currentEdit.description">
         </b-form-input>
         <b-row align-h="center" class="m-3">
@@ -44,7 +44,7 @@
 
     <b-row v-if="noCardHero">
       <b-col>
-          <h1>{{this.Hero.name}} no se encuentra en la base de datos</h1>
+          <h1 class="texto">{{this.Hero.name}} no se encuentra en la base de datos</h1>
       </b-col>
     </b-row>
     <b-row align-h="center">  
@@ -61,7 +61,7 @@
     </b-row>
     <b-row  v-if="isLoading" class="loading m-3" align-h="center">
       <b-col cols="1" align-h="center">
-        <h2> Loading...</h2>
+        <h2 class="texto"> Loading...</h2>
       </b-col>
     </b-row>    
 </b-container>
@@ -111,23 +111,34 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+
 .loading{
   background: #FFFF;
   align-content: center;
   height: 400px;
   width: 1250px;
 }
-
-.formularioEditar{
+.formularioConsulta{
   position: fixed;
-  left:0;
-  right:0;
-  margin: auto;
   width: 500px;
   height: 200px;
-  background: red;
+  z-index: 100;
+  }
+.formularioEditar{
+  color: white;
+  position: fixed;
+  width: 500px;
+  height: 200px;
+  background: black;
   z-index: 100;
   border-radius: 10px;
+  right: 0;
+  left: 0;
+  margin: auto;
   }
 
+.texto{
+  font-family: "Roboto Condensed";
+}
 </style>

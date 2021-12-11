@@ -1,19 +1,13 @@
 <template>
-<b-row>
-  <b-col cols="3">
+<b-row class="">
     <b-card
     class="card"
-    :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${nombre}`" img-height="410">
+    :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${nombre}`" img-height="500">
+    <h3 class="texto">Nombre: {{ nombre }}</h3>
+    <h5 class="texto">Modificado: {{ modificado }}</h5>
+    <b-button @click="close()">Cerrar</b-button>
     </b-card>
-  </b-col>
-  <b-col cols="9" align-self="center">
-    <h2>Nombre: {{ nombre }}</h2>
-    <h3>Modificado: {{ modificado }}</h3>
-  </b-col>
 </b-row>
-
-
-
     
 </template>
 
@@ -32,24 +26,23 @@ export default {
     indice: String
   },
   methods: {
-    ...mapActions(['editHeroAction']),
+    ...mapActions(['editHeroAction', 'hideCardHeroAction']),
     editarCard() {
       this.editHeroAction(this.indice);
+    },
+    close(){
+      console.log('llega al close')
+      this.hideCardHeroAction();
     }
   }
 };
 </script>
 
 <style>
-.card{
-  margin: 6px;
-  height: 400px;
-  width: 350px;
-  padding: 0;
-}
-.card:hover{
-  transform: scale(1.05);
-  z-index: 90;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+
+.texto{
+  font-family: "Roboto Condensed";
 }
 
 #img{

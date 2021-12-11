@@ -36,6 +36,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+
 .cards{
   margin: 6px;
   height: 355px;
@@ -47,14 +49,17 @@ export default {
   z-index: 90;
 }
 .texto-nombre{
+  font-family: "Roboto Condensed";
   margin: 2px;
   font-size: 14px;
   font-weight: 400;
 }
 .texto-descripcion{
+  font-family: "Roboto Condensed";
   font-size: xx-small;
 }
 .texto-modificado{
+  font-family: "Roboto Condensed";
   font-size: x-small;
   margin-bottom: 4px;
 }
@@ -62,6 +67,7 @@ export default {
   padding: 3px;
 }
   .btnEditar{
+    font-family: "Roboto Condensed";
     background-color: red !important;
     border-color: red;
   }

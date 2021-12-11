@@ -52,9 +52,7 @@ export default new Vuex.Store({
       });
     },
     editHeroAction(context, indice) {
-      console.log('indice')
-      console.log(indice)
-      this.state.showForm = true;
+        this.state.showForm = true;
       this.state.currentEdit = this.state.listOfHeroes[indice]
     },
     getHeroAction: async function (context,name) {
@@ -82,6 +80,10 @@ export default new Vuex.Store({
     },
     changeOnStoreAction(context,posts){
       this.state.showForm = false;
+    },
+    hideCardHeroAction() {
+      console.log('action')
+      this.state.showCardHero = false;
     }
   },
 })
