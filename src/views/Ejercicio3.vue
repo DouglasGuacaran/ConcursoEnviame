@@ -50,14 +50,15 @@
     <b-row align-h="center">  
       <b-col lg="5" md="3" sm="7" class="text-center cards" v-for="(item,index) in listOfHeroes" :key="index+'A'">
         <CardHeroes 
-        :nombre="item.name"
+        :name="item.name"
         :thumbnailPath="item.thumbnailPath"
         :thumbnailExtension="item.thumbnailExtension"
-        :descripcion="item.description"
-        :modificado="item.dateFormat"
-        :indice="index.toString()"
+        :description="item.description"
+        :date="item.dateFormat"
+        :index="index.toString()"
         />
       </b-col>
+      <infinite-loading @infinite="getHeroesAction"></infinite-loading>
     </b-row>
     <b-row  v-if="isLoading" class="loading m-3" align-h="center">
       <b-col cols="1" align-h="center">
@@ -68,6 +69,7 @@
 </template>
 
 <script>
+import InfiniteLoading from 'vue-infinite-loading';
 import CardHero from '../components/CardHero.vue'
 import CardHeroes from '../components/CardHeroes.vue'
 import { mapState, mapActions } from "vuex";
@@ -80,13 +82,14 @@ export default {
   components:{
     CardHero,
     CardHeroes,
+    InfiniteLoading
   },
   computed:{
     ...mapState(['listOfHeroes', 'isLoading', 'showForm', 'pagina', 'currentEdit','Hero', 'showCardHero', 'noCardHero']),
   },
 
   methods:{
-  ...mapActions(['getHeroesAction','changeOnStoreAction','getHeroAction']),
+  ...mapActions(['getHeroesAction','changeOnStoreAction','getHeroAction',]),
   aceptarCambios(){
     this.changeOnStoreAction()
   },
@@ -94,18 +97,20 @@ export default {
   requestHero(){
     this.getHeroAction(this.Hero.name)
   },
-  handleScroll(){
-    let scrollHeight=document.documentElement.scrollHeight
-    if (window.scrollY+window.innerHeight>=scrollHeight - 10){
-    this.getHeroesAction(this.pagina)
-    }
-  }
-
+  // handleScroll(){
+  //   let scrollHeight=document.documentElement.scrollHeight
+    
+  //   if (window.scrollY+window.innerHeight>=scrollHeight - 10){
+  //     console.log('Entro')
+  //   this.getMoreHeroesAction()
+    
+  //   }
+  // }
   },
-  mounted(){
-    this.getHeroesAction(this.offset)
-    window.addEventListener("scroll", this.handleScroll)
-      }
+  // beforeMount (){
+  //   this.getHeroesAction(this.pagina)
+  //   window.addEventListener("scroll", this.handleScroll)
+  //     }
   }
 
 </script>

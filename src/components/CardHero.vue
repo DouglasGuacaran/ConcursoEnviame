@@ -2,9 +2,9 @@
 <b-row class="">
     <b-card
     class="card"
-    :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${nombre}`" img-height="500">
-    <h3 class="texto">Nombre: {{ nombre }}</h3>
-    <h5 class="texto">Modificado: {{ modificado }}</h5>
+    :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${name}`" img-height="500">
+    <h3 class="texto">Nombre: {{ name }}</h3>
+    <h5 class="texto">Modificado: {{ date }}</h5>
     <b-button @click="close()">Cerrar</b-button>
     </b-card>
 </b-row>
@@ -18,20 +18,19 @@ export default {
   components:{
   },
   props: {
-    nombre: String,
+    name: String,
     thumbnailPath: String,
     thumbnailExtension: String,
     descripcion: String,
-    modificado: String,
-    indice: String
+    date: String,
+    index: String
   },
   methods: {
     ...mapActions(['editHeroAction', 'hideCardHeroAction']),
     editarCard() {
-      this.editHeroAction(this.indice);
+      this.editHeroAction(this.index);
     },
     close(){
-      console.log('llega al close')
       this.hideCardHeroAction();
     }
   }

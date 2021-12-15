@@ -2,10 +2,10 @@
 <b-col class="cards">
   <b-card
       class="cards"
-      :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${nombre}`" img-height="170">
-        <b-card-text class="texto-nombre"> {{ nombre }} </b-card-text>
-        <b-card-text class="texto-descripcion"> Descripcion: {{ descripcion }} </b-card-text>
-        <b-card-text class="texto-modificado"> Modificado: {{ modificado }} </b-card-text>
+      :img-src="`${thumbnailPath}.${thumbnailExtension}`" :alt="`${name}`" img-height="170">
+        <b-card-text class="texto-nombre"> {{ name }} </b-card-text>
+        <b-card-text class="texto-descripcion"> Descripcion: {{ description }} </b-card-text>
+        <b-card-text class="texto-modificado"> Fecha: {{ date }} </b-card-text>
         <b-button class="btnEditar" size="sm" @click="editarCard()">Editar</b-button>
   </b-card>
 </b-col>
@@ -19,17 +19,17 @@ export default {
   components:{
   },
   props: {
-    nombre: String,
+    name: String,
     thumbnailPath: String,
     thumbnailExtension: String,
-    descripcion: String,
-    modificado: String,
-    indice: String
+    description: String,
+    date: String,
+    index: String
   },
   methods: {
     ...mapActions(['editHeroAction']),
     editarCard() {
-      this.editHeroAction(this.indice);
+      this.editHeroAction(this.index);
     }
   }
 };

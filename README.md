@@ -1,4 +1,4 @@
-# concurso-enviame Douglas Guacarán
+# Challenge-envíame Douglas Guacarán
 
 ## Project setup
 ```
