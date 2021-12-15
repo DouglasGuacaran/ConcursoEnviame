@@ -1,19 +1,28 @@
 <template>
-<b-container>
-  <b-row v-if="showCardHero" align-h="center">
-    <b-col cols="12" class="text-center formularioConsulta" v-for="(item,index) in Hero" :key="index+'A'">
-      <CardHero 
-      :nombre="item.name"
-      :thumbnailPath="item.thumbnailPath"
-      :thumbnailExtension="item.thumbnailExtension"
-      :descripcion="item.description"
-      :modificado="item.dateFormat"
-      />
-    </b-col>
-  </b-row>
+  <b-container>
+    <b-row v-if="showCardHero" align-h="center">
+      <b-col
+        cols="12"
+        class="text-center formularioConsulta"
+        v-for="(item, index) in Hero"
+        :key="index + 'A'"
+      >
+        <CardHero
+          :nombre="item.name"
+          :thumbnailPath="item.thumbnailPath"
+          :thumbnailExtension="item.thumbnailExtension"
+          :descripcion="item.description"
+          :modificado="item.dateFormat"
+        />
+      </b-col>
+    </b-row>
     <b-row align-h="center" class="justify-content">
       <b-col cols="3">
-        <b-img src="https://logos-marcas.com/wp-content/uploads/2020/11/Marvel-Logotipo-2012-2014.jpg" fluid alt="Logo Marvel"></b-img>
+        <b-img
+          src="https://logos-marcas.com/wp-content/uploads/2020/11/Marvel-Logotipo-2012-2014.jpg"
+          fluid
+          alt="Logo Marvel"
+        ></b-img>
       </b-col>
       <b-col cols="4">
         <span class="texto">Buscar Personaje:</span>
@@ -21,13 +30,18 @@
         </b-form-input>
         <b-row align-h="center">
           <b-col class="p-0 m-1" cols="3">
-            <b-button class="text-center texto" size="sm" type="submit" @click="requestHero()" >
+            <b-button
+              class="text-center texto"
+              size="sm"
+              type="submit"
+              @click="requestHero()"
+            >
               Buscar
             </b-button>
           </b-col>
         </b-row>
       </b-col>
-    </b-row >
+    </b-row>
     <b-row v-if="showForm" class="formularioEditar" align-h="center">
       <b-col cols="10" align-h="center">
         <span class="texto">Nombre del Personaje:</span>
@@ -37,100 +51,107 @@
         <b-form-input class="text-center" v-model="currentEdit.description">
         </b-form-input>
         <b-row align-h="center" class="m-3">
-          <b-col cols="4"><b-button class="btn btn-button" @click="aceptarCambios()">Aceptar</b-button></b-col>
+          <b-col cols="4"
+            ><b-button class="btn btn-button" @click="aceptarCambios()"
+              >Aceptar</b-button
+            ></b-col
+          >
         </b-row>
       </b-col>
     </b-row>
 
     <b-row v-if="noCardHero">
       <b-col>
-          <h1 class="texto">{{this.Hero.name}} no se encuentra en la base de datos</h1>
+        <h1 class="texto">
+          {{ this.Hero.name }} no se encuentra en la base de datos
+        </h1>
       </b-col>
     </b-row>
-    <b-row align-h="center">  
-      <b-col lg="5" md="3" sm="7" class="text-center cards" v-for="(item,index) in listOfHeroes" :key="index+'A'">
-        <CardHeroes 
-        :name="item.name"
-        :thumbnailPath="item.thumbnailPath"
-        :thumbnailExtension="item.thumbnailExtension"
-        :description="item.description"
-        :date="item.dateFormat"
-        :index="index.toString()"
+    <b-row align-h="center">
+      <b-col
+        lg="5"
+        md="3"
+        sm="7"
+        class="text-center cards"
+        v-for="(item, index) in listOfHeroes"
+        :key="index + 'A'"
+      >
+        <CardHeroes
+          :name="item.name"
+          :thumbnailPath="item.thumbnailPath"
+          :thumbnailExtension="item.thumbnailExtension"
+          :description="item.description"
+          :date="item.dateFormat"
+          :index="index.toString()"
         />
       </b-col>
       <infinite-loading @infinite="getHeroesAction"></infinite-loading>
     </b-row>
-    <b-row  v-if="isLoading" class="loading m-3" align-h="center">
+    <b-row v-if="isLoading" class="loading m-3" align-h="center">
       <b-col cols="1" align-h="center">
-        <h2 class="texto"> Loading...</h2>
+        <h2 class="texto">Loading...</h2>
       </b-col>
-    </b-row>    
-</b-container>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
-import InfiniteLoading from 'vue-infinite-loading';
-import CardHero from '../components/CardHero.vue'
-import CardHeroes from '../components/CardHeroes.vue'
+import InfiniteLoading from "vue-infinite-loading";
+import CardHero from "../components/CardHero.vue";
+import CardHeroes from "../components/CardHeroes.vue";
 import { mapState, mapActions } from "vuex";
 export default {
-  name:'Ejercicio3',
-    data(){
-    return{
-    }
+  name: "Ejercicio3",
+  data() {
+    return {};
   },
-  components:{
+  components: {
     CardHero,
     CardHeroes,
-    InfiniteLoading
+    InfiniteLoading,
   },
-  computed:{
-    ...mapState(['listOfHeroes', 'isLoading', 'showForm', 'pagina', 'currentEdit','Hero', 'showCardHero', 'noCardHero']),
+  computed: {
+    ...mapState([
+      "listOfHeroes",
+      "isLoading",
+      "showForm",
+      "pagina",
+      "currentEdit",
+      "Hero",
+      "showCardHero",
+      "noCardHero",
+    ]),
   },
 
-  methods:{
-  ...mapActions(['getHeroesAction','changeOnStoreAction','getHeroAction',]),
-  aceptarCambios(){
-    this.changeOnStoreAction()
-  },
+  methods: {
+    ...mapActions(["getHeroesAction", "changeOnStoreAction", "getHeroAction"]),
+    aceptarCambios() {
+      this.changeOnStoreAction();
+    },
 
-  requestHero(){
-    this.getHeroAction(this.Hero.name)
+    requestHero() {
+      this.getHeroAction(this.Hero.name);
+    },
   },
-  // handleScroll(){
-  //   let scrollHeight=document.documentElement.scrollHeight
-    
-  //   if (window.scrollY+window.innerHeight>=scrollHeight - 10){
-  //     console.log('Entro')
-  //   this.getMoreHeroesAction()
-    
-  //   }
-  // }
-  },
-  // beforeMount (){
-  //   this.getHeroesAction(this.pagina)
-  //   window.addEventListener("scroll", this.handleScroll)
-  //     }
-  }
-
+};
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap");
 
-.loading{
-  background: #FFFF;
+.loading {
+  background: #ffff;
   align-content: center;
   height: 400px;
   width: 1250px;
 }
-.formularioConsulta{
+.formularioConsulta {
   position: fixed;
   width: 500px;
   height: 200px;
   z-index: 100;
-  }
-.formularioEditar{
+}
+.formularioEditar {
   color: white;
   position: fixed;
   width: 500px;
@@ -141,9 +162,9 @@ export default {
   right: 0;
   left: 0;
   margin: auto;
-  }
+}
 
-.texto{
+.texto {
   font-family: "Roboto Condensed";
 }
 </style>
