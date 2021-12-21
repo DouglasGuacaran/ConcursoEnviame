@@ -21,7 +21,7 @@ export default {
     name: String,
     thumbnailPath: String,
     thumbnailExtension: String,
-    descripcion: String,
+    description: String,
     date: String,
     index: String
   },

@@ -14,6 +14,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Ejercicio2",
   data() {
@@ -21,7 +22,8 @@ export default {
       Json1: "",
     };
   },
-  components: {},
+  components: {
+  },
   methods: {
     JSON() {
       let values = {

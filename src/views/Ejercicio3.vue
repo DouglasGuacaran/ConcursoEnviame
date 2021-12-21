@@ -8,11 +8,11 @@
         :key="index + 'A'"
       >
         <CardHero
-          :nombre="item.name"
+          :name="item.name"
           :thumbnailPath="item.thumbnailPath"
           :thumbnailExtension="item.thumbnailExtension"
-          :descripcion="item.description"
-          :modificado="item.dateFormat"
+          :description="item.description"
+          :date="item.dateFormat"
         />
       </b-col>
     </b-row>
@@ -26,20 +26,7 @@
       </b-col>
       <b-col cols="4">
         <span class="texto">Buscar Personaje:</span>
-        <b-form-input title="Busca personaje" v-model="Hero.name" required>
-        </b-form-input>
-        <b-row align-h="center">
-          <b-col class="p-0 m-1" cols="3">
-            <b-button
-              class="text-center texto"
-              size="sm"
-              type="submit"
-              @click="requestHero()"
-            >
-              Buscar
-            </b-button>
-          </b-col>
-        </b-row>
+        <Autocomplete/>
       </b-col>
     </b-row>
     <b-row v-if="showForm" class="formularioEditar" align-h="center">
@@ -74,7 +61,7 @@
         sm="7"
         class="text-center cards"
         v-for="(item, index) in listOfHeroes"
-        :key="index + 'A'"
+        :key="index + 'B'"
       >
         <CardHeroes
           :name="item.name"
@@ -100,12 +87,14 @@ import InfiniteLoading from "vue-infinite-loading";
 import CardHero from "../components/CardHero.vue";
 import CardHeroes from "../components/CardHeroes.vue";
 import { mapState, mapActions } from "vuex";
+import Autocomplete from '../components/Autocomplete.vue'
 export default {
   name: "Ejercicio3",
   data() {
     return {};
   },
   components: {
+    Autocomplete,
     CardHero,
     CardHeroes,
     InfiniteLoading,
@@ -124,15 +113,15 @@ export default {
   },
 
   methods: {
-    ...mapActions(["getHeroesAction", "changeOnStoreAction", "getHeroAction"]),
+    ...mapActions([ "changeOnStoreAction", "getHeroesAction"]),
     aceptarCambios() {
       this.changeOnStoreAction();
     },
 
-    requestHero() {
-      this.getHeroAction(this.Hero.name);
-    },
+    
   },
+  mounted() {
+  }
 };
 </script>
 
