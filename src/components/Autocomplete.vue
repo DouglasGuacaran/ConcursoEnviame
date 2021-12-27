@@ -2,11 +2,13 @@
     <b-row>
         <b-col>
         <b-row>
-            <b-col>
+            <b-col
+            @keyup.enter="submit()">
                 <vue-bootstrap-typeahead
-                :data="this.listOfName"
+                :data="this.listOfNames"
                 placeholder="Escriba el nombre del héroe..."
                 v-model="name"
+                
                 />
             </b-col>
         </b-row>
@@ -17,6 +19,7 @@
               size="sm"
               type="submit"
               @click="requestHero()"
+              @keyup.enter="submit()"
             >
               Buscar
             </b-button>
@@ -28,26 +31,36 @@
 </template>
 
 <script>
-
-import { mapActions, mapState } from 'vuex'
+import listOfName from "../assets/Json/ListOfHero.json"
+import { mapActions } from 'vuex'
 export default {
     data() {
         return {
             name:'',    
-            addresses: [],
+            listOfNames:[],
         }
     },
+    components:{
+        listOfName
+    },
     computed:{
-        ...mapState(['listOfName'])
+        
     },
         methods:{
-        ...mapActions(["getHeroAction"]),
+        ...mapActions(["getHeroAction","getListOfNameAction"]),
+        mountListOfNames(){
+            this.listOfNames = listOfName
+        },
+        submit(){
+            this.getHeroAction(this.name)
+        },
         requestHero() {
             this.getHeroAction(this.name)
         },
     },
     mounted(){
-
+        this.mountListOfNames()
+        this.getListOfNameAction()
     },
     
 }
