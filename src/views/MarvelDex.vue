@@ -26,7 +26,7 @@
       </b-col>
       <b-col cols="4">
         <span class="texto">Buscar Personaje:</span>
-        <Autocomplete/>
+        <Autocomplete />
       </b-col>
     </b-row>
     <b-row v-if="showForm" class="formularioEditar" align-h="center">
@@ -87,9 +87,9 @@ import InfiniteLoading from "vue-infinite-loading";
 import CardHero from "../components/CardHero.vue";
 import CardHeroes from "../components/CardHeroes.vue";
 import { mapState, mapActions } from "vuex";
-import Autocomplete from '../components/Autocomplete.vue'
+import Autocomplete from "../components/Autocomplete.vue";
 export default {
-  name: "Ejercicio3",
+  name: "MarvelDex",
   data() {
     return {};
   },
@@ -113,15 +113,12 @@ export default {
   },
 
   methods: {
-    ...mapActions([ "changeOnStoreAction", "getHeroesAction"]),
+    ...mapActions(["changeOnStoreAction", "getHeroesAction"]),
     aceptarCambios() {
       this.changeOnStoreAction();
     },
-
-    
   },
-  mounted() {
-  }
+  mounted() {},
 };
 </script>
 

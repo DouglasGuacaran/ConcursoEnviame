@@ -3,7 +3,6 @@ import Vuex from "vuex";
 import axios from "axios";
 
 Vue.use(Vuex);
-  
 
 export default new Vuex.Store({
   state: {
@@ -18,7 +17,7 @@ export default new Vuex.Store({
     noCardHero: false,
     currentEdit: {},
     Hero: [],
-    listOfName:[]
+    listOfName: [],
   },
   mutations: {
     getHeroesMutation(state, posts) {
@@ -40,7 +39,9 @@ export default new Vuex.Store({
       setTimeout(() => {}, 2000);
       await axios
         .get(
-          `https://gateway.marvel.com:443/v1/public/characters?offset=${21 * this.state.pagina}&ts=1&limit=20&apikey=b1f34175d9d5ab7a8ff4a2d091499ed0&hash=1838612144f50b3aefa8f42a4189473b`
+          `https://gateway.marvel.com:443/v1/public/characters?offset=${
+            21 * this.state.pagina
+          }&ts=1&limit=20&apikey=b1f34175d9d5ab7a8ff4a2d091499ed0&hash=1838612144f50b3aefa8f42a4189473b`
         )
         .then((response) => {
           if (response.data.data.results.length) {
@@ -125,7 +126,7 @@ export default new Vuex.Store({
       }
       const listOfName = this.state.listOfNamesOfHeroes.map(({ name }) => name);
       console.log(listOfName);
-      console.log(this.state.listOfNamesOfHeroes)
+      console.log(this.state.listOfNamesOfHeroes);
     },
     changeOnStoreAction(context, posts) {
       this.state.showForm = false;
